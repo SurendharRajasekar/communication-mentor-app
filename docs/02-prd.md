@@ -1,6 +1,6 @@
 # Product Requirements Document (PRD)
 
-**Status:** Locked v1.0
+**Status:** Locked v1.1 (amended — see Changelog)
 **Phase:** 2 of 19 — PRD
 **Depends on:** `01-product-vision.md`
 
@@ -13,9 +13,16 @@
 ## MVP Core Loop
 User gets a scenario prompt ("Tell me about a time you handled conflict at work") → records a voice response → speech is transcribed → AI mentor gives structured feedback → session is logged → mentor references it in the next session → streak/XP increments.
 
+## Modes (v1)
+Two named practice modes, both mapped to Priya's actual trigger moments (see `03-personas.md`):
+1. **🎤 Interview Practice** — scenarios built around interview questions (e.g. STAR-method prompts)
+2. **💼 Workplace Communication** — scenarios built around meetings, client calls, and difficult conversations
+
+Both modes share one pipeline: Select mode → Speak → Speech-to-text → AI analysis → Personalized feedback → Save session → Progress tracking. "Mode" is a thin config layer (scenario set + feedback rubric) on top of shared infrastructure — this is what makes the V2 modes below cheap to add later.
+
 ## Functional Requirements (v1)
 1. Authentication (Firebase — email/social sign-in)
-2. Scenario library — curated prompts, tagged by category (interview / meeting / client call)
+2. Scenario library — curated prompts, tagged by mode (Interview Practice / Workplace Communication)
 3. Voice recording + playback (review before submit)
 4. Speech-to-text transcription pipeline
 5. AI mentor feedback engine (structure, clarity, filler words — e.g. STAR-method adherence for interview prompts)
@@ -48,3 +55,14 @@ A user can:
 - Return the next day to a mentor that references the previous session
 
 This is the definition of "MVP done."
+
+## Roadmap (Post-MVP / V2)
+Two additional modes were proposed to broaden audience appeal, and deliberately deferred rather than dropped — the shared pipeline makes them cheap to add once the core loop and mentor-memory differentiator are validated:
+- **🎲 Random Topic Practice** — general fluency practice, not tied to a specific career trigger
+- **🗣️ Free Talk** — unstructured practice with no fixed scenario or rubric
+
+These were held out of v1 because they drift toward general fluency-building (already covered by competitors like ELSA) rather than the high-stakes, career-outcome-driven pain this product is built around — and because a habit-formation product needs real stakes behind each session, which these two modes don't inherently provide.
+
+## Changelog
+- **v1.1** — Added named Modes section (Interview Practice, Workplace Communication); added V2 roadmap for Random Topic Practice and Free Talk
+- **v1.0** — Initial PRD locked
