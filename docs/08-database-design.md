@@ -35,7 +35,7 @@ erDiagram
     timestamp created_at
   }
   USER_PROGRESS {
-    uuid user_id PK_FK
+    uuid user_id PK
     int current_streak
     int longest_streak
     date last_practice_date
